@@ -1,0 +1,17 @@
+import re
+import urllib
+import urllib2
+
+url = 'https://movie.douban.com/'
+
+pages = urllib2.urlopen(url).read()
+
+findallObj = re.findall(r'https.+?\.jpg',pages)
+
+x = 0
+
+for imgurl in findallObj :
+	urllib.urlretrieve(imgurl,'/opt/Pic/%s.jpg' % x)
+	x+=1
+
+print "done!!!"	
