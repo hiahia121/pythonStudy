@@ -1,0 +1,15 @@
+# -*-coding:gbk-*-
+
+import urllib2
+import re
+
+url = "https://douban.fm/j/v2/song/1467746g3832/"
+
+pages = urllib2.urlopen(url).read()
+
+
+f = open("first.txt","w")
+f.write(pages)
+f.close()
+
+print "done!!!"
