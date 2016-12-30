@@ -17,7 +17,7 @@ def crawl_all_model_music():                     #爬下所有风格下，所有
         up_up_url = "https://douban.fm/j/v2/songlist/explore?type=hot&genre={0}&limit=20&sample_cnt=5".format(up_up_up_i)
         crawl_one_model_music(up_up_url)
         count_style_music += 1
-        print "###################################### " +count_style_music+ " style music has been crawled ###########################################"
+        print "###################################### " + str(count_style_music) + " style music has been crawled ###########################################"
 
 def crawl_one_model_music(up_up_url):                                                #爬下一个风格下，所有模块下的音乐名字＋喜欢数
 
