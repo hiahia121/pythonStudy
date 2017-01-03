@@ -7,6 +7,7 @@ import time
 import StringIO, gzip
 from lxml import etree
 count = 1
+sleep_count = 1
 url_list = []
 f = open('three_city_hotel.txt','w')
 # 解压gzip
@@ -24,7 +25,7 @@ def get_html(url):
             'Accept-Language': 'zh-CN,zh;q=0.8',
             'Cache-Control': 'max-age=0',
             'Connection': 'keep-alive',
-            'Cookie':'_hc.v="\"4d3d1a80-cc41-48d6-a663-a82fe36dc029.1467209186\""; PHOENIX_ID=0a010889-15954078f61-7634e8e; _tr.u=NPKejoJKIxP5DtPi;_tr.s=NKSirD4taOE5C7bF; s_ViewType=1; JSESSIONID=7E919F0D338C669EB846B197C5885AE7; aburl=1; cy=435; cye=yanqing',
+            'Cookie':'_hc.v="\"4d3d1a80-cc41-48d6-a663-a82fe36dc029.1467209186\""; PHOENIX_ID=0a010889-15954078f61-7634e8e; _tr.u=NPKejoJKIxP5DtPi;_tr.s=NKSirD4taOE5C7bF; s_ViewType=1; JSESSIONID=7E919F0D338C669EB846B197C5885AE7; aburl=1; cy=435; cye=shenzhen',
             'Host':'www.dianping.com',
             'Upgrade-Insecure-Requests':'1',
             'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'}
@@ -73,6 +74,11 @@ if __name__ == '__main__':
             html = get_html(url)
             parse_html(html)
             count +=1
+            sleep_count +=1
+            if sleep_count % 5 == 0:
+                time.sleep(5)
+            elif sleep_count % 25 == 0:
+                time.sleep(25)
         print "##################################################  " + city + "  has been crawled #######################################"
         time.sleep(5)
     print "all has been crawled!!!"
