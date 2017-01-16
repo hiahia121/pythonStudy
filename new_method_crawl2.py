@@ -36,29 +36,31 @@ def run():
 
     for i in url_list[0:]:
 
+        print i
+        f1.write(i)
+
         for j in range(3):
             time.sleep(j*5)
             try:
                 html = get_html(i)
                 data = parse_html(html)
-
                 for aim_data in data:
                     f.write(aim_data)
-                    f1.write(i)
-
-                print i
                 print count
                 count +=1
                 print "+++++++++++++++++++++++++++++++++++++++++++"
                 j = 0
                 break
-
             except:
                 print 'error'
+
+
+
 
 
 
 if __name__ == '__main__':
     run()
     f.close()
+    f1.close()
     print "all has been crawled and saved"
